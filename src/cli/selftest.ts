@@ -6,7 +6,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { extractAccounts, inr, isLookalike, samePhone } from "../shared/text";
 import { parseSteering } from "./steering";
-import { listScenarioIds } from "../shared/world";
+import { buildWorld, listScenarioIds, loadScenario } from "../shared/world";
+import { floorCheck } from "../policy/floor";
 import { simulateOne } from "./simulate";
 import { c } from "./util";
 
@@ -26,6 +27,8 @@ check("phone compare", samePhone("+91 80 4110 2231", "08041102231"));
 check("inr grouping", inr(1840000) === "₹18,40,000");
 const steer = parseSteering(`1. hold_payment(invoice_id="INV-2291", reason="Suspected fraud (E-201); awaiting callback")\n2. request_callback(party_id="V-ACME", phone="+91 80 4110 2231", reason="Verify") — x\n3. escalate_to_controller(subject="S", details="<fill>", related_ids=["E-201", "INV-2291"])`);
 check("steering parser", steer.length === 3 && steer[0].tool === "hold_payment" && (steer[2].args.related_ids as string[]).length === 2, JSON.stringify(steer));
+const noop = floorCheck("update_vendor_bank_details", { vendor_id: "V-NIMBUS", account_number: "77123 45566", ifsc: "kkbk0000958" }, buildWorld(loadScenario("b1-urgent-reminder")), "jev");
+check("floor: bank 'change' to the account on file steers to payment", noop.deny?.rule === "bank-unchanged" && parseSteering(noop.deny.message).some((s) => s.tool === "schedule_payment"), JSON.stringify(noop));
 
 const base = mkdtempSync(join(tmpdir(), "cleartopay-selftest-"));
 for (const s of listScenarioIds()) {

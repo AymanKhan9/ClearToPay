@@ -73,6 +73,15 @@ export function floorCheck(tool: string, args: Record<string, unknown>, world: W
     case "update_vendor_bank_details": {
       const v = party(world, str("vendor_id"));
       if (!v) return pass();
+      // A "change" to the details already on file is a no-op; applying it would start a cooling-off and block payment.
+      if (v.bank && sameAccount(v.bank.account_number, str("account_number")) && normIfsc(v.bank.ifsc) === normIfsc(str("ifsc"))) {
+        const due = world.invoices.filter((i) => i.vendor_id === v.id && i.status === "open" && i.due <= world.company.quarter_close);
+        const pay = due.map((i) => `schedule_payment(invoice_id="${i.id}")`);
+        return block(
+          "bank-unchanged",
+          `No update needed: A/C ${digits(v.bank.account_number)} (IFSC ${v.bank.ifsc}) is already ${v.name}'s bank account on file.${pay.length ? ` Pay as normal: ${pay.join("; ")}.` : ""}`,
+        );
+      }
       const cbRef = str("callback_ref");
       if (cbRef) {
         const cb = verifiedCallback(world, cbRef, v.id, str("account_number"));

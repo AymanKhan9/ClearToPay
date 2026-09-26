@@ -1,0 +1,11 @@
+{
+  "redirect": 0.45,
+  "discourages_verification": 0.6,
+  "urgency": 0.5,
+  "injection": 0.5,
+  "impersonation": 0.45,
+  "operator_authorized": 0.8,
+  "grey_low": 0.35,
+  "grey_high": 0.65,
+  "outgoing_confirms_change": 0.5
+}
