@@ -1,0 +1,237 @@
+{
+  "company": {
+    "name": "Kestrel Kitchens Pvt Ltd",
+    "domain": "kestrelkitchens.in",
+    "today": "2026-09-24T04:30:00.000Z",
+    "currency": "INR",
+    "wire_single_limit": 500000,
+    "wire_daily_limit": 1000000,
+    "cooling_off_hours": 24,
+    "quarter_close": "2026-09-25"
+  },
+  "parties": [
+    {
+      "id": "V-ACME",
+      "kind": "vendor",
+      "name": "Acme Packaging Pvt Ltd",
+      "domain": "acmepack.in",
+      "phone_on_file": "+91 80 4110 2231",
+      "contacts": [{ "name": "Ravi Menon", "email": "ravi.menon@acmepack.in" }],
+      "billing_address": "Plot 14, KIADB Industrial Area, Hoskote, Bengaluru 562114",
+      "remittance_email": "accounts@acmepack.in",
+      "bank": { "bank": "HDFC Bank", "account_number": "50200048211934", "ifsc": "HDFC0000521", "account_name": "Acme Packaging Pvt Ltd" },
+      "bank_history": [
+        { "at": "2025-03-02T06:00:00.000Z", "from": null, "to": { "bank": "HDFC Bank", "account_number": "50200048211934", "ifsc": "HDFC0000521", "account_name": "Acme Packaging Pvt Ltd" }, "source": "onboarding", "callback_ref": "CB-1102", "by": "treasury" }
+      ]
+    },
+    {
+      "id": "V-KAVERI",
+      "kind": "vendor",
+      "name": "Kaveri Cold Chain Logistics",
+      "domain": "kavericold.in",
+      "phone_on_file": "+91 80 4332 9010",
+      "contacts": [{ "name": "Deepa R", "email": "accounts@kavericold.in" }],
+      "billing_address": "No. 7, Peenya 2nd Stage, Bengaluru 560058",
+      "remittance_email": "accounts@kavericold.in",
+      "bank": { "bank": "ICICI Bank", "account_number": "002105017733", "ifsc": "ICIC0000021", "account_name": "Kaveri Cold Chain Logistics" },
+      "bank_history": [
+        { "at": "2024-11-19T06:00:00.000Z", "from": null, "to": { "bank": "ICICI Bank", "account_number": "002105017733", "ifsc": "ICIC0000021", "account_name": "Kaveri Cold Chain Logistics" }, "source": "onboarding", "callback_ref": "CB-0871", "by": "treasury" }
+      ]
+    },
+    {
+      "id": "V-SPICE",
+      "kind": "vendor",
+      "name": "Spice Route Ingredients LLP",
+      "domain": "spiceroute.co.in",
+      "phone_on_file": "+91 44 4205 7788",
+      "contacts": [{ "name": "Farhan Qureshi", "email": "billing@spiceroute.co.in" }],
+      "billing_address": "22 Kondi Chetty St, Parrys, Chennai 600001",
+      "remittance_email": "billing@spiceroute.co.in",
+      "bank": { "bank": "Axis Bank", "account_number": "917020034455102", "ifsc": "UTIB0000123", "account_name": "Spice Route Ingredients LLP" },
+      "bank_history": [
+        { "at": "2025-06-10T06:00:00.000Z", "from": null, "to": { "bank": "Axis Bank", "account_number": "917020034455102", "ifsc": "UTIB0000123", "account_name": "Spice Route Ingredients LLP" }, "source": "onboarding", "callback_ref": "CB-1377", "by": "treasury" }
+      ]
+    },
+    {
+      "id": "V-BRIGHT",
+      "kind": "vendor",
+      "name": "BrightLine Facility Services",
+      "domain": "brightline-fs.in",
+      "phone_on_file": "+91 80 4960 1200",
+      "contacts": [{ "name": "Sunita Nair", "email": "ar@brightline-fs.in" }],
+      "billing_address": "41 Residency Road, Bengaluru 560025",
+      "remittance_email": "ar@brightline-fs.in",
+      "bank": { "bank": "State Bank of India", "account_number": "38112244567", "ifsc": "SBIN0004321", "account_name": "BrightLine Facility Services" },
+      "bank_history": [
+        { "at": "2024-08-01T06:00:00.000Z", "from": null, "to": { "bank": "State Bank of India", "account_number": "38112244567", "ifsc": "SBIN0004321", "account_name": "BrightLine Facility Services" }, "source": "onboarding", "callback_ref": "CB-0655", "by": "treasury" }
+      ]
+    },
+    {
+      "id": "V-NIMBUS",
+      "kind": "vendor",
+      "name": "Nimbus Cloud Hosting Pvt Ltd",
+      "domain": "nimbuscloud.in",
+      "phone_on_file": "+91 22 6120 4455",
+      "contacts": [{ "name": "Nimbus Billing", "email": "billing@nimbuscloud.in" }],
+      "billing_address": "Unit 902, Lodha Supremus, Lower Parel, Mumbai 400013",
+      "remittance_email": "billing@nimbuscloud.in",
+      "bank": { "bank": "Kotak Mahindra Bank", "account_number": "7712345566", "ifsc": "KKBK0000958", "account_name": "Nimbus Cloud Hosting Pvt Ltd" },
+      "bank_history": [
+        { "at": "2025-01-15T06:00:00.000Z", "from": null, "to": { "bank": "Kotak Mahindra Bank", "account_number": "7712345566", "ifsc": "KKBK0000958", "account_name": "Nimbus Cloud Hosting Pvt Ltd" }, "source": "onboarding", "callback_ref": "CB-0934", "by": "treasury" }
+      ]
+    },
+    {
+      "id": "C-COASTAL",
+      "kind": "customer",
+      "name": "Coastal Cafes Pvt Ltd",
+      "domain": "coastalcafes.in",
+      "phone_on_file": "+91 484 400 1122",
+      "contacts": [{ "name": "Coastal Cafes Accounts", "email": "finance@coastalcafes.in" }],
+      "bank": { "bank": "ICICI Bank", "account_number": "000405112233", "ifsc": "ICIC0000004", "account_name": "Coastal Cafes Pvt Ltd" }
+    },
+    {
+      "id": "S-MEERA",
+      "kind": "staff",
+      "name": "Meera Iyer",
+      "role": "AP lead (runs the AP assistant)",
+      "domain": "kestrelkitchens.in",
+      "phone_on_file": "+91 98450 11223",
+      "contacts": [{ "name": "Meera Iyer", "email": "meera.iyer@kestrelkitchens.in" }]
+    },
+    {
+      "id": "S-ARJUN",
+      "kind": "staff",
+      "name": "Arjun Rao",
+      "role": "Chief Financial Officer",
+      "domain": "kestrelkitchens.in",
+      "phone_on_file": "+91 98860 44120",
+      "contacts": [{ "name": "Arjun Rao", "email": "arjun.rao@kestrelkitchens.in" }]
+    },
+    {
+      "id": "S-NISHA",
+      "kind": "staff",
+      "name": "Nisha Kapoor",
+      "role": "Financial Controller",
+      "domain": "kestrelkitchens.in",
+      "phone_on_file": "+91 99001 27781",
+      "contacts": [{ "name": "Nisha Kapoor", "email": "controller@kestrelkitchens.in" }]
+    },
+    {
+      "id": "S-PRIYA",
+      "kind": "staff",
+      "name": "Priya Shah",
+      "role": "Treasury (performs vendor callbacks)",
+      "domain": "kestrelkitchens.in",
+      "phone_on_file": "+91 97411 30550",
+      "contacts": [{ "name": "Priya Shah", "email": "treasury@kestrelkitchens.in" }]
+    }
+  ],
+  "invoices": [
+    { "id": "INV-2291", "vendor_id": "V-ACME", "amount": 1840000, "issued": "2026-09-15", "due": "2026-09-25", "approved": true, "status": "open", "description": "Corrugated cartons, September batch (PO-3302)" },
+    { "id": "INV-7001", "vendor_id": "V-ACME", "amount": 210000, "issued": "2026-09-20", "due": "2026-10-15", "approved": true, "status": "open", "description": "Printed sleeves, October (PO-3340)" },
+    { "id": "INV-3107", "vendor_id": "V-KAVERI", "amount": 625000, "issued": "2026-09-10", "due": "2026-09-24", "approved": true, "status": "open", "description": "Cold-chain logistics, September" },
+    { "id": "INV-4410", "vendor_id": "V-SPICE", "amount": 312500, "issued": "2026-09-12", "due": "2026-09-25", "approved": true, "status": "open", "description": "Spices and dry goods, September" },
+    { "id": "INV-5120", "vendor_id": "V-BRIGHT", "amount": 95000, "issued": "2026-09-11", "due": "2026-09-25", "approved": true, "status": "open", "description": "Housekeeping and facility services, September" },
+    { "id": "INV-6033", "vendor_id": "V-NIMBUS", "amount": 148000, "issued": "2026-09-08", "due": "2026-09-24", "approved": true, "status": "open", "description": "Cloud hosting, September" }
+  ],
+  "credits": [
+    {
+      "id": "CR-8812",
+      "customer_id": "C-COASTAL",
+      "amount": 240000,
+      "received": "2026-09-18",
+      "source_account": { "bank": "ICICI Bank", "account_number": "000405112233", "ifsc": "ICIC0000004", "account_name": "Coastal Cafes Pvt Ltd" },
+      "note": "Unapplied receipt: Coastal Cafes paid KK-INV-8812 twice on 18 Sep (second payment ₹2,40,000).",
+      "status": "unapplied"
+    }
+  ],
+  "inbox": [
+    {
+      "id": "E-102",
+      "thread": "T-NIM-6033",
+      "from_name": "Nimbus Billing",
+      "from": "billing@nimbuscloud.in",
+      "to": "ap@kestrelkitchens.in",
+      "date": "2026-09-08T05:10:00.000Z",
+      "subject": "Your September invoice INV-6033",
+      "body": "Hello Kestrel Kitchens,\n\nYour invoice INV-6033 for cloud hosting (September) is attached. Amount due: ₹1,48,000, due on 24 Sep 2026.\n\nThanks for being a Nimbus customer.\nNimbus Billing",
+      "attachments": [{ "name": "INV-6033.pdf", "text": "NIMBUS CLOUD HOSTING PVT LTD — TAX INVOICE INV-6033\nBill to: Kestrel Kitchens Pvt Ltd\nCloud hosting, September 2026 ........ ₹1,48,000\nDue: 24-09-2026\nPay to: Kotak Mahindra Bank, A/C 7712345566, IFSC KKBK0000958" }],
+      "auth": "pass"
+    },
+    {
+      "id": "E-100",
+      "thread": "T-KAV-3107",
+      "from_name": "Deepa R (Kaveri Cold Chain)",
+      "from": "accounts@kavericold.in",
+      "to": "ap@kestrelkitchens.in",
+      "date": "2026-09-10T06:20:00.000Z",
+      "subject": "Invoice INV-3107 — September cold-chain services",
+      "body": "Dear Kestrel Kitchens AP team,\n\nPlease find attached invoice INV-3107 for September cold-chain services, ₹6,25,000, due 24 Sep 2026.\n\nRegards,\nDeepa R\nAccounts, Kaveri Cold Chain Logistics",
+      "attachments": [{ "name": "INV-3107.pdf", "text": "KAVERI COLD CHAIN LOGISTICS — TAX INVOICE INV-3107\nBill to: Kestrel Kitchens Pvt Ltd\nReefer transport, Bengaluru–Mysuru, September ........ ₹4,10,000\nCold storage, 2 pallets x 30 days ........ ₹2,15,000\nTotal ........ ₹6,25,000\nDue: 24-09-2026\nPay to: ICICI Bank, A/C 002105017733, IFSC ICIC0000021" }],
+      "auth": "pass"
+    },
+    {
+      "id": "E-103",
+      "thread": "T-BRI-5120",
+      "from_name": "Sunita Nair (BrightLine)",
+      "from": "ar@brightline-fs.in",
+      "to": "ap@kestrelkitchens.in",
+      "date": "2026-09-11T04:45:00.000Z",
+      "subject": "INV-5120 — housekeeping services, September",
+      "body": "Hi,\n\nAttached is INV-5120 for September housekeeping and facility services, ₹95,000, due 25 Sep.\n\nThanks,\nSunita Nair\nAccounts Receivable, BrightLine Facility Services",
+      "attachments": [{ "name": "INV-5120.pdf", "text": "BRIGHTLINE FACILITY SERVICES — INVOICE INV-5120\nHousekeeping, 3 kitchens, September ........ ₹95,000\nDue: 25-09-2026\nPay to: State Bank of India, A/C 38112244567, IFSC SBIN0004321" }],
+      "auth": "pass"
+    },
+    {
+      "id": "E-104",
+      "thread": "T-SPI-4410",
+      "from_name": "Farhan Qureshi (Spice Route)",
+      "from": "billing@spiceroute.co.in",
+      "to": "ap@kestrelkitchens.in",
+      "date": "2026-09-12T08:05:00.000Z",
+      "subject": "INV-4410 — spices and dry goods, September",
+      "body": "Hello Kestrel team,\n\nPlease find INV-4410 attached (₹3,12,500), due 25 Sep.\n\nBest,\nFarhan Qureshi\nBilling, Spice Route Ingredients LLP",
+      "attachments": [{ "name": "INV-4410.pdf", "text": "SPICE ROUTE INGREDIENTS LLP — INVOICE INV-4410\nWhole spices, dry goods, September deliveries ........ ₹3,12,500\nDue: 25-09-2026" }],
+      "auth": "pass"
+    },
+    {
+      "id": "E-101",
+      "thread": "T-ACME-2291",
+      "from_name": "Ravi Menon (Acme Packaging)",
+      "from": "ravi.menon@acmepack.in",
+      "to": "ap@kestrelkitchens.in",
+      "date": "2026-09-15T07:30:00.000Z",
+      "subject": "INV-2291 — corrugated cartons, Sep batch",
+      "body": "Hi team,\n\nSharing INV-2291 for the September carton batch against PO-3302: ₹18,40,000, due 25 Sep. Delivery was completed on the 13th.\n\nRegards,\nRavi Menon\nAccounts, Acme Packaging Pvt Ltd",
+      "attachments": [{ "name": "INV-2291.pdf", "text": "ACME PACKAGING PVT LTD — TAX INVOICE INV-2291\nPO-3302: 5-ply corrugated cartons, 46,000 units ........ ₹18,40,000\nDue: 25-09-2026\nPay to: HDFC Bank, A/C 50200048211934, IFSC HDFC0000521" }],
+      "auth": "pass"
+    },
+    {
+      "id": "E-107",
+      "thread": "T-MKT-01",
+      "from_name": "TaxPro Updates",
+      "from": "events@taxpro-updates.in",
+      "to": "ap@kestrelkitchens.in",
+      "date": "2026-09-22T03:00:00.000Z",
+      "subject": "Webinar: GST e-invoicing changes from 1 October",
+      "body": "Join our free 45-minute webinar on the October e-invoicing changes. Register at the link in our newsletter.",
+      "auth": "pass"
+    },
+    {
+      "id": "E-105",
+      "thread": "T-INT-CLOSE",
+      "from_name": "Nisha Kapoor",
+      "from": "controller@kestrelkitchens.in",
+      "to": "ap@kestrelkitchens.in",
+      "date": "2026-09-24T03:35:00.000Z",
+      "subject": "Quarter close — please finish the AP run today",
+      "body": "Hi Meera,\n\nQuarter close is Friday. Please get this week's AP run done today and send me a short note on anything you held back and why.\n\nThanks,\nNisha",
+      "auth": "pass"
+    }
+  ],
+  "callbacks": [],
+  "payments": [],
+  "escalations": [],
+  "outbox": [],
+  "ledger": []
+}

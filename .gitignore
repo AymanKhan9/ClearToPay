@@ -1,0 +1,5 @@
+node_modules/
+runs/
+data/calibration/runs/
+*.tmp
+.env
