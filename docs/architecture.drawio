@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="ClearToPay guard">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" page="1" pageScale="1" pageWidth="1360" pageHeight="800" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="&lt;b&gt;ClearToPay&lt;/b&gt; — every money tool call the AP agent makes passes a Failproof AI guard" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontColor=#1a1a1a;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1000" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="operator" value="&lt;b&gt;Operator&lt;/b&gt;&lt;br&gt;task prompt&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;the only trusted channel&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="agent" value="&lt;b&gt;AP agent&lt;/b&gt;&lt;br&gt;Claude Code headless&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;reads the inbox, pays vendors, wires, refunds&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="300" y="170" width="220" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="guard" value="Failproof AI · PreToolUse guard" style="swimlane;startSize=40;html=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;rounded=1;arcSize=4;swimlaneFillColor=#faf7fc;" vertex="1" parent="1">
+          <mxGeometry x="640" y="120" width="320" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="&lt;b&gt;① Code floor&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;sender domain, lookalikes, amounts, duplicates, wire limits, cooling-off&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=13;" vertex="1" parent="guard">
+          <mxGeometry x="30" y="60" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="&lt;b&gt;② Flags from earlier verdicts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;party or account already marked red&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" vertex="1" parent="guard">
+          <mxGeometry x="30" y="170" width="260" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="&lt;b&gt;③ Jev (semantic questions only)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;trusted: did the operator approve this?&lt;br&gt;evidence: redirect, urgency, authority, injection&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" vertex="1" parent="guard">
+          <mxGeometry x="30" y="280" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="&lt;b&gt;④ Code decision&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;red · amber · grey · green&lt;br&gt;fails closed on Jev error (8.5 s deadline)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=13;" vertex="1" parent="guard">
+          <mxGeometry x="30" y="400" width="260" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="state" value="&lt;b&gt;Guard state&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;operator.json · flags · verdicts.jsonl&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="280" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="jevapi" value="&lt;b&gt;TypeSafe Jev API&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;jev-1.13.0 · probabilities · ~340 ms p50&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="400" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="erp" value="&lt;b&gt;ap MCP server · mock ERP&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;inbox, vendors, invoices, payments&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;size=12;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="505" width="240" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="denynote" value="&lt;b&gt;&lt;font color=&quot;#b85450&quot;&gt;DENY steers the agent&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;carries the Jev probabilities and the exact calls to make instead:&lt;br&gt;hold_payment(…)&lt;br&gt;request_callback(phone on file)&lt;br&gt;escalate_to_controller(…)&lt;/font&gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="260" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stats" value="&lt;b&gt;90 real runs&lt;/b&gt; (Haiku, k=3, real Jev), sent to attacker: &lt;b&gt;no guard ₹42.3L&lt;/b&gt; · &lt;b&gt;standard floor ₹5.5L&lt;/b&gt; · &lt;b&gt;&lt;font color=&quot;#2d7a2d&quot;&gt;floor + Jev ₹0&lt;/font&gt;&lt;/b&gt;, with no legit work blocked on the hard negatives" style="text;html=1;align=left;verticalAlign=middle;fontSize=14;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="680" width="1260" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_task" value="task" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#666666;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="operator" target="agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_record" value="prompt recorded (UserPromptSubmit)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#666666;dashed=1;fontSize=11;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="operator" target="state">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="90" />
+              <mxPoint x="1180" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_call" value="tool call" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#6c8ebf;strokeWidth=2;fontSize=11;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.2429;entryDx=0;entryDy=0;" edge="1" parent="1" source="agent" target="s1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#9673a6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="guard" source="s1" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#9673a6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="guard" source="s2" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#9673a6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="guard" source="s3" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_state" value="flags" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=block;startSize=8;endArrow=block;endSize=8;strokeColor=#666666;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="s2" target="state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_jev" value="questions" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;startArrow=block;startSize=8;endArrow=block;endSize=8;strokeColor=#d6b656;strokeWidth=2;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s3" target="jevapi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_allow" value="ALLOW" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#82b366;strokeWidth=2;fontSize=11;fontColor=#2d7a2d;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="s4" target="erp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_deny" value="DENY" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endSize=8;strokeColor=#b85450;strokeWidth=2;dashed=1;fontSize=11;fontColor=#b85450;fontStyle=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;" edge="1" parent="1" source="s4" target="agent">
+          <mxGeometry x="-0.75" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="560" />
+              <mxPoint x="590" y="242" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
