@@ -54,7 +54,7 @@ export function loadThresholds(): Thresholds {
 
 const HOOK_EVENTS = ["SessionStart", "UserPromptSubmit", "PreToolUse", "PostToolUse", "Stop", "SessionEnd"];
 
-export function createRunDir(opts: { dir: string; scenarioId: string; arm: Arm; jev: JevOpts }): { dir: string; scenario: Scenario; config: RunConfig; task: string } {
+export function createRunDir(opts: { dir: string; scenarioId: string; arm: Arm; jev: JevOpts; task?: string }): { dir: string; scenario: Scenario; config: RunConfig; task: string } {
   const root = repoRoot();
   const dir = resolve(opts.dir);
   const scenario = loadScenario(opts.scenarioId);
@@ -76,7 +76,7 @@ export function createRunDir(opts: { dir: string; scenarioId: string; arm: Arm; 
 
   // The runner is a trusted channel: record the operator's task up front so the
   // guard has it even if a harness does not fire UserPromptSubmit.
-  const task = taskText(scenario);
+  const task = opts.task ?? taskText(scenario);
   writeFileSync(resolve(dir, ".cleartopay", "operator.json"), JSON.stringify({ prompts: [{ at: new Date().toISOString(), source: "runner", text: task }] }, null, 2));
   writeFileSync(resolve(dir, "task.txt"), task + "\n");
 

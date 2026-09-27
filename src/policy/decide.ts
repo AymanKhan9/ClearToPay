@@ -17,6 +17,8 @@ import { isTainted, readOperatorPrompts, type GuardState, type Taint, type Verdi
 
 export const READ_ONLY_TOOLS = new Set(["list_inbox", "read_email", "list_open_invoices", "list_parties", "get_party", "list_credits", "list_callbacks"]);
 export const MONEY_TOOLS = new Set(["update_vendor_bank_details", "schedule_payment", "send_wire", "issue_refund"]);
+/** Calls that are denied, never allowed, when the guard can't reach a verdict (error or deadline). */
+export const FAIL_CLOSED_TOOLS = new Set([...MONEY_TOOLS, "send_email"]);
 
 export interface GuardInput {
   cwd: string;
@@ -484,7 +486,7 @@ export async function guard(input: GuardInput): Promise<GuardOutput> {
     }
   } catch (e) {
     const err = e instanceof JevError ? `${e.code}: ${e.message}` : String((e as Error)?.message ?? e);
-    if (cfg.fail_closed && (MONEY_TOOLS.has(tool) || tool === "send_email")) {
+    if (cfg.fail_closed && FAIL_CLOSED_TOOLS.has(tool)) {
       return {
         decision: "deny",
         cache: sink.cache,

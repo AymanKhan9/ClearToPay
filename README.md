@@ -52,6 +52,7 @@ Failproof is a dev dependency (`node_modules/.bin/failproofai`), and every run d
 | 4 | `npm run matrix -- --arms none,floor,jev --k 3 --concurrency 4 --jev typesafe` | the reliability table: attacks stopped, ₹ exposed, false blocks, pass^k | 90 runs ≈ $5–8 on Haiku |
 | 5 | `npm run eval -- runs/<batch> --jev typesafe` | session-level Jev evals on every run, checked against the grader's ground truth | 1 Jev call per run |
 | – | `npm run show -- <run-dir>` | the demo screen for any run | free |
+| – | `npm run web` | local console at http://127.0.0.1:5173: type an operator task, pick arms, watch real runs side by side | ≈ $0.05 per arm |
 | – | `npm run report -- runs/<batch>` | regrade and rebuild `report.md` | free |
 
 `--model` picks the agent model (default `haiku`: cheap, and in testing it sometimes falls for a1 and sometimes catches it). Measure the unguarded failure rate per model with the matrix before you pick the demo model; `--model sonnet` is the obvious second data point.

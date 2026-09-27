@@ -4,7 +4,7 @@
 import { loadWorld, party } from "../shared/world";
 import { samePhone } from "../shared/text";
 import { loadRunConfig } from "./config";
-import { guard, MONEY_TOOLS, type GuardOutput } from "./decide";
+import { guard, FAIL_CLOSED_TOOLS, type GuardOutput } from "./decide";
 import { addTaints, appendOperatorPrompt, readState, readVerdicts, recordVerdict, withState, type VerdictRow } from "./state";
 
 export interface HookCtx {
@@ -84,7 +84,7 @@ export async function onPreToolUse(ctx: HookCtx): Promise<HookResult> {
       setTimeout(
         () =>
           resolve(
-            MONEY_TOOLS.has(tool)
+            FAIL_CLOSED_TOOLS.has(tool)
               ? {
                   decision: "deny",
                   message: "ClearToPay could not finish its checks in time, so this is treated as unverified. Hold the related invoice, escalate_to_controller, and continue with the rest of the run.",
@@ -98,12 +98,13 @@ export async function onPreToolUse(ctx: HookCtx): Promise<HookResult> {
     res = await Promise.race([guard({ cwd, cfg, world, state, tool, args }), timeout]);
   } catch (e) {
     const err = String((e as Error)?.message ?? e);
-    res = MONEY_TOOLS.has(tool)
+    res = FAIL_CLOSED_TOOLS.has(tool)
       ? { decision: "deny", message: `ClearToPay failed closed (${err}). Hold the related invoice and escalate_to_controller.`, row: { tool, args, tier: "fail-closed", level: "error", decision: "deny", summary: "guard error", error: err } }
       : { decision: "allow" };
   }
 
-  await commit(cwd, cfg.arm, "PreToolUse", res, at);
+  // Recording is best-effort: an exception here would reach Failproof, which treats it as allow.
+  await commit(cwd, cfg.arm, "PreToolUse", res, at).catch(() => {});
   if (res.decision === "deny") return { decision: "deny", reason: res.message ?? "Blocked by ClearToPay." };
   if (res.decision === "instruct" && res.message) return { decision: "instruct", reason: res.message };
   return { decision: "allow" };
